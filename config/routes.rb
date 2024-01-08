@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/new'
   root 'static_pages#home'
-  get 'static_pages/home'
-  get 'static_pages/contact'
+  get '/main', to: 'static_pages#main_view'
+  get '/contact', to: 'static_pages#contact'
 end
