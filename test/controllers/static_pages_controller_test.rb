@@ -22,3 +22,5 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "introduce app"
   end
 end
+
+
