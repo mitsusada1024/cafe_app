@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/main', to: 'static_pages#main_view'
   get '/contact', to: 'static_pages#contact'
   get '/createacount', to: 'users#new'
+  resources :users
 end

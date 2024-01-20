@@ -1,13 +1,64 @@
-* {
-  box-sizing: border-box;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
 }
 
 body {
+  padding-top: 60px;
   margin: 0;
-  padding: 0;
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: #e6e6e6;
 }
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
 
 header {
   padding: 30px 4% 10px;
@@ -53,7 +104,7 @@ header nav {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url('cafe_index.jpg') top center / cover no-repeat;
+  background: url("cafe_index.jpg") top center / cover no-repeat;
 }
 
 // Start!
@@ -122,6 +173,7 @@ header nav {
   }
 }
 
+
 h2 {
   margin: 0;
   font-size: 30px;
@@ -158,6 +210,132 @@ footer ul {
 }
 
 footer ul li {
-  float: left;
+  text-align: center;
   margin-left: 15px;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+}
+
+/* sidebar */
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+/*コンテンツ（フッター関連「以外」を囲むブロック）
+---------------------------------------------------------------------------*/
+#contents {
+  flex: 1;
+  padding: 1%;	/*コンテンツ内の余白*/
+  height: 100%;
+  display: flex;	/*flexボックスを使う指定*/
+  flex-direction: column;	/*子要素を縦並びにする*/
+  justify-content: space-between;	/*並びかたの種類の指定*/
+  max-width: 1800px;	/*サイトの最大幅。これ以上広がらない。*/
+  margin: 0 auto;
+}
+
+/*画像全般の設定*/
+img {border: none;max-width: 100%;height: auto;vertical-align: middle;}
+
+main {
+  margin: 0.1rem 0;	/*ブロックの外側（上下、左右）に空けるスペース*/
+  width: 100%;
+
+}
+
+/*メインエリア*/
+main.column .main-area {
+  margin-bottom: 30px;	/*ボックスの下に空けるスペース。sub-areaとの間の余白です。*/
+}
+
+/*画面幅900px以上の追加指定*/
+@media screen and (min-width:900px) {
+
+  /*カラムで使う為の指定*/
+  main.column {
+    display: flex;	/*flexボックスを使う指定*/
+    justify-content: space-between;	/*並びかたの種類の指定*/
+  }
+
+  /*メインエリア*/
+  main.column .main-area {
+    margin-bottom: 0;
+    order: 2;				/*並び順。数字の小さい順番に表示されます。*/
+    flex: 1;
+    margin-left: 10px;		/*sub-areaとの間に空けるスペース*/
+  }
+
+  /*サブエリア*/
+  main.column .sub-area {
+    order: 1;		/*並び順。数字の小さい順番に表示されます。*/
+    width: 340px;	/*幅*/
+  }
+
 }
