@@ -14,7 +14,7 @@ body {
   padding-top: 60px;
   margin: 0;
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #e6e6e6;
+  background: rgba(255, 255, 255, 0.9) url("home_b.jpeg"); /* 透過度は0.0から1.0で指定（0.0は完全透明、1.0は完全不透明） */
 }
 
 section {
@@ -102,77 +102,33 @@ header nav {
 .main-visual {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   height: 100vh;
   background: url("cafe_index.jpg") top center / cover no-repeat;
-}
-
-// Start!
-.btn {
-  display: block;
-  border: 2px solid;
   position: relative;
-  background: #fff;
-  color: #614f38;
-  overflow: hidden;
-  border: 2px solid #614f38;
-  padding: 0.8rem 0.8rem 0.8rem 3rem; /* パディングの調整 */
-  font-size: 12px; /* フォントサイズの調整 */
-  transition: all .3s;
-  border-radius: 4px;
-  &:before,
-  &:after {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 50%;
-  }
-
-  &:before {
-    width: 4px; /* 幅の調整 */
-    height: 4px; /* 高さの調整 */
-    left: 0.8rem; /* 位置の調整 */
-    border-top: solid 2px #fff;
-    border-right: solid 2px #fff;
-    z-index: 2;
-    transform: translateY(-50%) rotate(45deg);
-    transition: all .3s;
-
-  }
-
-  &:after {
-
-    left: -1.2rem; /* 位置の調整 */
-    width: 3rem; /* 幅の調整 */
-    background: #614f38;
-    z-index: 1;
-    height: 130%;
-    border-radius: 50%;
-    transform: translateY(-50%);
-    transition: all .5s;
-  }
-
-  span {
-    transition: all .3s;
-    z-index: 3;
-  }
-
-  &:hover {
-    span {
-      position: relative;
-      color: #fff;
-    }
-
-    &:after {
-      right: 0;
-      width: 120%;
-      border-radius: 0;
-
-
-    }
-  }
 }
 
+.main-visual h2 {
+  position: absolute;
+  text-align: center; /* 中央揃え */
+  top: 100px; /* 下端に配置 */
+  left: 50%; /* 水平方向中央に配置 */
+  transform: translateX(-50%); /* 中央揃えの微調整 */
+}
+
+.main-visual .intro {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  bottom: 200px;
+}
+
+.main-visual .intro img {
+  width: 50%;
+  margin-bottom: 10px;
+}
 
 h2 {
   margin: 0;
@@ -188,7 +144,6 @@ footer {
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
-  position: fixed;
   bottom: 0;
 }
 
@@ -310,6 +265,23 @@ main {
 
 }
 
+.btn-area li {
+  display: flex;
+  border-bottom: 3px solid #cddc39;
+  flex-direction: row; /* デフォルトの方向は横になっているので不要かもしれませんが、明示的に指定 */
+}
+
+.btn-area li p {
+  margin-right: 10px; /* パラグラフ間の余白を設定 */
+}
+
+.btn-area li p img {
+  width: 60px; /* 適切なサイズに調整 */
+  height: auto; /* 縦横比を保持 */
+  margin-bottom: 5px; /* 上方向のマージンを追加 */
+}
+
+
 /*メインエリア*/
 main.column .main-area {
   margin-bottom: 30px;	/*ボックスの下に空けるスペース。sub-areaとの間の余白です。*/
@@ -318,24 +290,50 @@ main.column .main-area {
 /*画面幅900px以上の追加指定*/
 @media screen and (min-width:900px) {
 
-  /*カラムで使う為の指定*/
   main.column {
-    display: flex;	/*flexボックスを使う指定*/
-    justify-content: space-between;	/*並びかたの種類の指定*/
+    display: flex;
+    justify-content: flex-start; /* 左寄せ */
   }
+
 
   /*メインエリア*/
   main.column .main-area {
     margin-bottom: 0;
     order: 2;				/*並び順。数字の小さい順番に表示されます。*/
-    flex: 1;
+    flex: 0.8;
     margin-left: 10px;		/*sub-areaとの間に空けるスペース*/
+    height: 450px;
   }
 
-  /*サブエリア*/
+  /* サブエリア */
   main.column .sub-area {
-    order: 1;		/*並び順。数字の小さい順番に表示されます。*/
-    width: 340px;	/*幅*/
-  }
+    order: 1;
+    width: 380px;
+    max-height: 450px; /* 適切な高さに設定（高さが一定の場合、縦スクロールが有効になります） */
+    overflow-y: scroll; /* 常に縦スクロールバーを表示 */
 
+  }
 }
+
+/* 画像 */
+.gallery-image {
+  margin-bottom: 10px; /* 任意のピクセル数や単位で適切な間隔を指定してください */
+}
+
+.fixed_btn {
+  position: fixed;
+  bottom: 40px;
+  right: 60px;
+  width: 90px; /* 任意の大きさを設定 */
+  height: 90px; /* 任意の大きさを設定 */
+  padding: 10px; /* 少し調整 */
+  background-color: rgba(144, 238, 144, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+}
+
