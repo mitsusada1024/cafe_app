@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -14,7 +15,7 @@ body {
   padding-top: 60px;
   margin: 0;
   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background: rgba(255, 255, 255, 0.9) url("home_b.jpeg"); /* 透過度は0.0から1.0で指定（0.0は完全透明、1.0は完全不透明） */
+
 }
 
 section {
@@ -71,7 +72,8 @@ header {
 
 header h1 {
   margin: 0; padding: 0;
-  font-size: 20px;
+  font-size: 23px;
+  font-family: 'Caveat', cursive;
 }
 
 header a {
@@ -93,6 +95,7 @@ header ul {
 header li {
   margin: 0 0 0 15px;
   font-size: 14px;
+
 }
 
 header nav {
@@ -106,6 +109,7 @@ header nav {
   height: 100vh;
   background: url("cafe_index.jpg") top center / cover no-repeat;
   position: relative;
+
 }
 
 .main-visual h2 {
@@ -114,6 +118,8 @@ header nav {
   top: 100px; /* 下端に配置 */
   left: 50%; /* 水平方向中央に配置 */
   transform: translateX(-50%); /* 中央揃えの微調整 */
+  font-family: 'Caveat', cursive;
+  font-size: 60px;
 }
 
 .main-visual .intro {
@@ -135,6 +141,11 @@ h2 {
   font-size: 30px;
   font-weight: normal;
   color: #fff;
+}
+.main-visual .btn{
+  color: black;
+  font-size: 40px;
+  line-height: 750px;
 }
 
 /* footer */
@@ -243,21 +254,26 @@ input {
   }
 }
 
-/*コンテンツ（フッター関連「以外」を囲むブロック）
----------------------------------------------------------------------------*/
 #contents {
   flex: 1;
-  padding: 1%;	/*コンテンツ内の余白*/
+  padding: 1%; /* コンテンツ内の余白 */
   height: 100%;
-  display: flex;	/*flexボックスを使う指定*/
-  flex-direction: column;	/*子要素を縦並びにする*/
-  justify-content: space-between;	/*並びかたの種類の指定*/
-  max-width: 1800px;	/*サイトの最大幅。これ以上広がらない。*/
+  display: flex; /* flexボックスを使う指定 */
+  flex-direction: column; /* 子要素を縦並びにする */
+  justify-content: space-between; /* 並び方の指定 */
+  max-width: 100%; /* サイトの最大幅。これ以上広がらない。 */
   margin: 0 auto;
+  background: rgba(255, 255, 255, 0.9) url("home_b.jpeg"); /* 背景の指定（透過度も含む） */
+  background-size: cover; /* 画像をアスペクト比を維持したまま親要素いっぱいに表示 */
 }
 
-/*画像全般の設定*/
-img {border: none;max-width: 100%;height: auto;vertical-align: middle;}
+/* 画像全般の設定 */
+img {
+  border: none; /* 画像のボーダーをなしに設定 */
+  max-width: 100%; /* 画像の最大幅を親要素に合わせる */
+  height: auto; /* 画像の高さを自動調整 */
+  vertical-align: middle; /* 画像を垂直方向に中央に配置 */
+}
 
 main {
   margin: 0.1rem 0;	/*ブロックの外側（上下、左右）に空けるスペース*/
