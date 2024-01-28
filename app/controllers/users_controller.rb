@@ -10,9 +10,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      reset_session
+      log_in @user
+      flash[:success] = "Welcome to the cafe land"
       redirect_to @user
-      flash[:success] = "Welcome to the Sample App!"
-      # 保存の成功をここで扱う。
     else
       render 'new', status: :unprocessable_entity
     end

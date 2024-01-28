@@ -15,17 +15,16 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_template 'users/new' #失敗した後、ユーザ登録pageが再度表示されていることの確認
   end
 
-  #有効なサインアップのテスト
   test "valid signup information" do
-    assert_difference 'User.count', 1 do #有効なユーザ情報をpostリクエストで送信した結果一つ増えていることの確認
+    assert_difference 'User.count', 1 do
       post users_path, params: { user: { name:  "Example User",
                                          email: "user@example.com",
                                          password:              "password",
                                          password_confirmation: "password" } }
     end
-    follow_redirect! #ログイン成功後ページが移動することの確認
-    assert_template 'users/show' #移動後のページ
+    follow_redirect!
+    assert_template 'users/show'
+    assert is_logged_in?
   end
-
 
 end
