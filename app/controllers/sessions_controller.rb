@@ -3,19 +3,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase) #mailアドレスの情報からデータベースを検索downcaseは大文字を小文字に
-    if user && user.authenticate(params[:session][:password]) #データベースにユーザがいるかパスワードがただしいか
-      reset_session #session情報のリセット
-      log_in user #ユーザをログイン状態にする
-      redirect_to user #ユーザの情報にログインする
+    user = User.find_by(email: params[:session][:email].downcase)
+    if user && user.authenticate(params[:session][:password])
+      reset_session
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+      log_in user
+      redirect_to user
     else
-      flash.now[:danger] = 'Invalid email/password combination' #フラッシュメッセージの表示 nowだから出たら消える
-      render 'new', status: :unprocessable_entity #ログインページの再表示
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new', status: :unprocessable_entity
     end
   end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url, status: :see_other
   end
 
