@@ -1,0 +1,15 @@
+one:
+  follower: kouki
+  followed: lana
+
+two:
+  follower: kouki
+  followed: malory
+
+three:
+  follower: lana
+  followed: kouki
+
+four:
+  follower: isida
+  followed: kouki
