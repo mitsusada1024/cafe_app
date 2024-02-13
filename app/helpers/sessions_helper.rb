@@ -1,12 +1,12 @@
 module SessionsHelper
-  def log_in(user)
+  def log_in(user)#ログイン
     session[:user_id] = user.id
     #セッションリプレイ攻撃から保護する
     session[:session_token] = user.session_token
   end
 
   # 永続的セッションのためにユーザーをデータベースに記憶する
-  def remember(user)
+  def remember(user)#ユーザの記憶、ブラウザのクッキーに情報の保存
     user.remember
     cookies.permanent.encrypted[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token

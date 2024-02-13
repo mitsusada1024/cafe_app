@@ -1,3 +1,5 @@
+<!-- 一番mainのページ-->
+
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
@@ -16,16 +18,17 @@
       <%= render 'shared/feed' %>
     </div>
   </div>
-<% else %>
 
-<div class="main-visual">
-  <h2>Cafe Vista</h2>
-    <%= link_to "はじめる(暇つぶし　1日１ずつ機能追加)", main_path, class: 'btn' %>
-  <!--
-  <div class = "intro">
-    <%# <%= image_tag "setumi.png" %> %>
+  <div class="main-visual">
+    <h2>Cafe Vista<br>
+      <div class = "start-btn">
+        <%= link_to "Start", main_path, class: 'btn' %>
+      </div>
+    </h2>
   </div>
-  -->
-</div>
 
+<% else %>
+  ログインして<br>ログインして<br>ログインして<br>ログインして<br>
+
+  使い方説明ページ　早くログインしろ
 <% end %>

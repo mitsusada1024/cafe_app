@@ -1,13 +1,19 @@
+
 <% provide(:title, "Contact") %>
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-</head>
-<body>
-  <h1>質問用ページ</h1>
-  <p>連絡したい方は以下にメッセージを書き込んでください</p>
-</body>
-</html>
+
+<div id="form">
+  <p class="form-title1">Cafe Vista</p>
+  <p class="form-title">質問送信フォーム</p>
+  <%= form_with(url: "#", scope: :password_reset) do |f| %>
+
+    <p>質問内容を入力してください(400文字以内)</p>
+    <p class="mail">
+      <%= f.email_field :email, class: 'form-control' %>
+    </p>
+
+    <p class="submit">
+      <%= f.submit "送信", class: "btn btn-primary" %>
+    </p>
+  <% end %>
+</div>
+

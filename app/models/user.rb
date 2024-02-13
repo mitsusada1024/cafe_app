@@ -11,12 +11,16 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
-  validates :name , presence: true , length: {maximum:50}
+  validates :name ,presence:{ message: "：名前が入力されていません" },length: {maximum:50, message: "名前は50文字以内で入力してください"}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email , presence: true , length: {maximum:255} ,format: {with: VALID_EMAIL_REGEX},
-            uniqueness: :true
+  validates :email , presence: { message: "メールアドレスが入力されていません" },
+            length: { maximum: 255, message: "メールアドレスは255文字以内で入力してください" },
+            format: { with: VALID_EMAIL_REGEX, message: "有効なメールアドレスの形式ではありません" },
+            uniqueness: { message: "すでに登録されているメールアドレスです" }
+
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: { message: "：パスワードが入力されていません" }, length: { minimum: 6, message: "：パスワードは少なくとも6文字以上で入力してください" }, allow_nil: true
+
 
   # 渡された文字列のハッシュ値を返す
   def User.digest(string)
