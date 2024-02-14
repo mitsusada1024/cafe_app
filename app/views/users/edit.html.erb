@@ -1,29 +1,38 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
+<div id="form">
+  <p class="form-title1">Cafe Vista</p>
+  <p class="form-title">アカウント情報編集</p>
+  <%= form_with(model: @user) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
 
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
       <a href="https://gravatar.com/emails">change</a>
     </div>
-  </div>
+
+    <p>名前</p>
+    <p class="name">
+      <%= f.text_field :name, class: 'form-control' %>
+    </p>
+
+    <p>メールアドレス</p>
+    <p class="mail">
+      <%= f.email_field :email, class: 'form-control' %>
+    </p>
+
+    <p>パスワード</p>
+    <p class="pass">
+      <%= f.password_field :password, class: 'form-control' %>
+    </p>
+
+    <p>パスワード確認用(もう一度入力してください)</p>
+    <p class="pass">
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </p>
+
+    <p class="submit">
+      <%= f.submit "変更内容登録", class: "btn btn-primary" %>
+    </p>
+  <% end %>
 </div>

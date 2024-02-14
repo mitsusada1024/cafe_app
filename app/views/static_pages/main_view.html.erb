@@ -9,55 +9,12 @@
 
 <body>
 
-<div id="contents">
-  <div class="btn-area">
-    <p>絞り込み</p>
-    <li>
-      <p>現在地から⭕️km以内</p>
-      <p>|||||||</p>
-      <p><%= image_tag "siteinasi.png" %></p>
-      <p><%= image_tag "kominnka.png" %></p>
-      <p><%= image_tag "italy.png" %></p>
-      <p><%= image_tag "flance.png" %></p>
-
-    </li>
-  </div>
-
-  <main class="column">
-    <!--メインエリア-->
-    <div class="main-area">
-      <p>現在地を中心とした検索結果map</p>
-      <%= image_tag "map.png" %>
+<div class="main-visual">
+  <h2>Cafe Vista<br>
+    <div class = "start-btn">
+      <%= link_to "Start", main_path, class: 'btn' %>
     </div>
-    <!--/.main-area-->
-
-
-    <div class="sub-area">
-      <p>検索結果(5件)🔍</p>
-      <div class="image-container">
-        <p>カフェ1</p>
-        <%= image_tag "cafe.jpeg", class: "gallery-image" %>
-        <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
-        <p>カフェ2</p>
-        <%= image_tag "cafe2.jpeg", class: "gallery-image" %>
-        <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
-        <p>カフェ3</p>
-        <%= image_tag "cafe3.jpeg", class: "gallery-image" %>
-        <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
-        <p>カフェ4</p>
-        <%= image_tag "cafe4.jpeg", class: "gallery-image" %>
-        <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
-        <p>カフェ5</p>
-        <%= image_tag "cafe5.jpeg", class: "gallery-image" %>
-        <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
-      </div>
-    </div>
-    <!--/.sub-area-->
-
-  </main>
-
+  </h2>
 </div>
-<%= link_to "投稿する", "#", class: "fixed_btn" %>
-
 </body>
 </html>

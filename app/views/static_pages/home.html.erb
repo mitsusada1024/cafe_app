@@ -1,34 +1,78 @@
 <!-- 一番mainのページ-->
-
-<% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
+<% if logged_in? %><!-- loginしてれば表示されるページ-->
+  <div id="contents">
+    <div class="btn-area">
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
       <section class="stats">
         <%= render 'shared/stats' %>
       </section>
+      <li>
+        現在届いているDMは〇〇件
+      </li>
+    </div>
+    <div class = "meter-area">
+      <p>現在のメーター|-------------------------------------|</p>
+    </div>
+
+    <main class="column">
+      <!--メインエリア-->
+      <div class="main-area">
+        <p>現在地を中心とした検索結果map55555555件</p>
+        <%= image_tag "map.png" %>
+      </div>
+      <!--/.main-area-->
+
+
+      <div class="sub-area">
+        <p class="ss">友達の投稿</p>
+        <%= render 'shared/feed' %>
+
+        <div class="image-container">
+          <p>カフェ1</p>
+          <%= image_tag "cafe.jpeg", class: "gallery-image" %>
+          <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
+          <p>カフェ2</p>
+          <%= image_tag "cafe2.jpeg", class: "gallery-image" %>
+          <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
+          <p>カフェ3</p>
+          <%= image_tag "cafe3.jpeg", class: "gallery-image" %>
+          <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
+          <p>カフェ4</p>
+          <%= image_tag "cafe4.jpeg", class: "gallery-image" %>
+          <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
+          <p>カフェ5</p>
+          <%= image_tag "cafe5.jpeg", class: "gallery-image" %>
+          <p>HPへ行く<br>cafe searchのユーザによる口コミを見る(○○件)</p>
+        </div>
+      </div>
+      <!--/.sub-area-->
+
+    </main>
+
+  </div>
+  <%= link_to "投稿する", "#", class: "fixed_btn" %>
+
+  <div class="row">
+    <aside class="col-md-4">
       <section class="micropost_form">
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
-    <div class="col-md-8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
   </div>
 
-  <div class="main-visual">
-    <h2>Cafe Vista<br>
-      <div class = "start-btn">
-        <%= link_to "Start", main_path, class: 'btn' %>
-      </div>
-    </h2>
-  </div>
 
 <% else %>
   ログインして<br>ログインして<br>ログインして<br>ログインして<br>
 
   使い方説明ページ　早くログインしろ
 <% end %>
+
+<!--
+        <p>|||||||</p>
+        <p><%= image_tag "siteinasi.png" %></p>
+        <p><%= image_tag "kominnka.png" %></p>
+        <p><%= image_tag "italy.png" %></p>
+        <p><%= image_tag "flance.png" %></p>
+        -->

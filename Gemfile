@@ -5,6 +5,8 @@ ruby "3.2.2"
 
 gem "rails",           "7.1.2"
 gem "image_processing",           "1.12.2"
+gem "kaminari"                    ,"1.2.2"
+gem "bootstrap4-kaminari-views"
 gem "active_storage_validations", "0.9.8"
 gem "bcrypt",          "3.1.18"
 gem "will_paginate",           "3.3.1"

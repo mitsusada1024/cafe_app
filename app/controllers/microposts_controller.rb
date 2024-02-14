@@ -8,7 +8,7 @@ class MicropostsController < ApplicationController
     @micropost.image.attach(params[:micropost][:image]) #投稿された画像を取得する
     if @micropost.save
       flash[:success] = "投稿を行いました！"
-      redirect_to root_url #投稿後はrootディレクトリに戻る
+      redirect_to main_path #投稿後はrootディレクトリに戻る
     else #失敗したらhomeに戻す
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home', status: :unprocessable_entity

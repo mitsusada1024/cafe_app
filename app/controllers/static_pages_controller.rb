@@ -15,4 +15,5 @@ class StaticPagesController < ApplicationController
   #main_viewアクション
   def main_view
   end
+
 end

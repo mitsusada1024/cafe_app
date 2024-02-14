@@ -10,13 +10,13 @@ class UsersController < ApplicationController
 
   #ユーザを全部表示（ページ機能付きkaminariに変えたい）
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.page(params[:page])
   end
 
   #特定のユーザを取得、マイクロポストも取得
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page])
+    @microposts = @user.microposts.page(params[:page])
   end
 
   #ユーザを削除して、削除成功のメッセージを表示、削除後は、users_urlへ移動
@@ -60,17 +60,17 @@ class UsersController < ApplicationController
 
   #ユーザがフォローしている人たちを探す
   def following
-    @title = "Following"
+    @title = "フォロー中のリスト"
     @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
+    @users = @user.following.page(params[:page])
     render 'show_follow'
   end
 
   #ユーザのフォワーを探す
   def followers
-    @title = "Followers"
+    @title = "フォロワーのリスト"
     @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers.page(params[:page])
     render 'show_follow'
   end
 
