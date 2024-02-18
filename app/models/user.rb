@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one_attached :avatar
   has_many :microposts ,dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
            foreign_key: "follower_id",
@@ -20,6 +21,9 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: { message: "：パスワードが入力されていません" }, length: { minimum: 6, message: "：パスワードは少なくとも6文字以上で入力してください" }, allow_nil: true
+  validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png],
+                                     message: "有効なフォーマットではありません" },
+            size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
 
 
   # 渡された文字列のハッシュ値を返す

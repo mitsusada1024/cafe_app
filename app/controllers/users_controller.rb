@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   #ユーザの新規作成
   def create
     @user = User.new(user_params)
+    @user.avatar.attach(params[:user][:avatar])
     if @user.save
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
 
   #ユーザの更新　指定したユーザを探してきて、レコードを更新
   def update
+    @user.avatar.attach(params[:user][:avatar]) if @user.avatar.blank?
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Profile updated"
@@ -77,8 +79,9 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
+    params.require(:user).permit(:name, :email, :password, :avatar,
                                  :password_confirmation)
+
   end
 
   #正しいユーザかどうか確認、そのユーザが現在ログインしているユーザかどうか確認
